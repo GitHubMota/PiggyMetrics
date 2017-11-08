@@ -20,5 +20,9 @@ server:
   context-path: /statistics
   port: 7000
 
+eureka:
+  instance:
+    home-page-url-path: ${server.context-path}
+
 rates:
   url: http://api.fixer.io

@@ -57,7 +57,8 @@ public class NotificationServiceImpl implements NotificationService {
 
 		recipients.forEach(recipient -> CompletableFuture.runAsync(() -> {
 			try {
-				emailService.send(type, recipient, null);
+				String attachment = client.getAccount(recipient.getAccountName());
+				//emailService.send(type, recipient, attachment);
 				recipientService.markNotified(type, recipient);
 			} catch (Throwable t) {
 				log.error("an error during remind notification for {}", recipient, t);

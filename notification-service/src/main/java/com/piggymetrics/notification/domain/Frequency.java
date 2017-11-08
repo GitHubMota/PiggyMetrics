@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public enum Frequency {
 
-	WEEKLY(7), MONTHLY(30), QUARTERLY(90);
+	DAILY(1), WEEKLY(7), MONTHLY(30), QUARTERLY(90);
 
 	private int days;
 

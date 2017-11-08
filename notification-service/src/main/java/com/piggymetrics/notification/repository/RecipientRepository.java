@@ -17,7 +17,7 @@ public interface RecipientRepository extends CrudRepository<Recipient, String> {
 	List<Recipient> findReadyForBackup();
 
 	@Query("{ $and: [ {scheduledNotifications.REMIND.active: true }, { $where: 'this.scheduledNotifications.REMIND.lastNotified < " +
-			"new Date(new Date().setDate(new Date().getDate() - this.scheduledNotifications.REMIND.frequency ))' }] }")
+			"new Date(new Date().setDate(new Date().getMinutes() - this.scheduledNotifications.REMIND.frequency))' }] }")
 	List<Recipient> findReadyForRemind();
 
 }

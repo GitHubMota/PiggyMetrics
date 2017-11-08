@@ -11,8 +11,12 @@ server:
   context-path: /notifications
   port: 8000
 
+eureka:
+  instance:
+    home-page-url-path: ${server.context-path}
+
 remind:
-  cron: 0 0 0 * * *
+  cron: 0 0/1 * * * *
   email:
     text: "Hey, {0}! We''ve missed you here on PiggyMetrics. It''s time to check your budget statistics.\r\n\r\nCheers,\r\nPiggyMetrics team"
     subject: PiggyMetrics reminder
@@ -33,17 +37,15 @@ spring:
       database: piggymetrics
       port: 27017
   mail:
-    host: smtp.gmail.com
-    port: 465
-    username: dev-user
-    password: dev-password
+    host: smtp.qq.com
+    username: 3434336465@qq.com
+    password: jun123456
     properties:
       mail:
         smtp:
           auth: true
-          socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
-            fallback: false
+          starttls:
+            enable:  true
+            required: true
           ssl:
             enable: true

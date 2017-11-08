@@ -10,3 +10,7 @@ spring:
 server:
   context-path: /uaa
   port: 5000
+
+eureka:
+  instance:
+    home-page-url-path: ${server.context-path}

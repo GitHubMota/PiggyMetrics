@@ -9,7 +9,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -22,11 +21,10 @@ security:
     resource:
       user-info-uri: http://auth-service:5000/uaa/users/current
 
-#spring:
-#  rabbitmq:
-#    host: rabbitmq
-
 spring:
+  sleuth:
+    sampler:
+      percentage: 1
   zipkin:
     base-url: http://localhost:9411
   cloud:
@@ -35,3 +33,7 @@ spring:
         binder:
           brokers: peer1:9092
           zk-nodes: peer1:2181
+
+management:
+  security:
+    enabled: false
